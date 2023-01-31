@@ -52,13 +52,11 @@ async function byId(id) {
   return data.pedidos[index];
 }
 
-// async function remove(id) {
-//   const data = JSON.parse(await readFile(fileName));
-//   data.accounts = data.accounts.filter(
-//     (account) => account.id !== parseInt(id)
-//   );
-//   await writeFile(fileName, JSON.stringify(data, null, 2));
-// }
+async function remove(id) {
+  const data = JSON.parse(await readFile(fileName));
+  data.accounts = data.pedidos.filter((account) => account.id !== parseInt(id));
+  await writeFile(fileName, JSON.stringify(data, null, 2));
+}
 
 export default {
   all,
@@ -66,7 +64,6 @@ export default {
   update,
   updateEntregue,
   // byId,
-  // remove,
-  // update,
+  remove,
   // updateBalance,
 };

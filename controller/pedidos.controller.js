@@ -69,15 +69,15 @@ async function updateEntregue(req, res, next) {
 //   }
 // }
 
-// async function remove(req, res, next) {
-//   try {
-//     await AccountService.remove(req.params.id);
-//     logger.info(`DELETE /account/:id - ${req.params.id}`);
-//     res.send({ deleted: true });
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+async function remove(req, res, next) {
+  try {
+    await PedidosService.remove(req.params.id);
+    logger.info(`DELETE /pedido/:id - ${req.params.id}`);
+    res.send({ deleted: true });
+  } catch (err) {
+    next(err);
+  }
+}
 
 // async function updateBalance(req, res, next) {
 //   try {
@@ -100,7 +100,7 @@ export default {
   update,
   updateEntregue,
   //   byId,
-  //   remove,
+  remove,
   //   update,
   //   updateBalance,
 };

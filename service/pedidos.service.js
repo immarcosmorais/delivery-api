@@ -20,9 +20,9 @@ async function updateEntregue(entregue, id) {
 //   return await AccountRepository.byId(id);
 // }
 
-// async function remove(id) {
-//   return await AccountRepository.remove(id);
-// }
+async function remove(id) {
+  return await PedidosRepository.remove(id);
+}
 
 // async function updateBalance(balance, id) {
 //   return await AccountRepository.updateBalance(balance, id);
@@ -34,7 +34,7 @@ export default {
   update,
   updateEntregue,
   //   byId,
-  //   remove,
+  remove,
   //   update,
   //   updateBalance,
 };
