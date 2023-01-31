@@ -54,8 +54,20 @@ async function byId(id) {
 
 async function remove(id) {
   const data = JSON.parse(await readFile(fileName));
-  data.accounts = data.pedidos.filter((account) => account.id !== parseInt(id));
+  data.pedidos = data.pedidos.filter((item) => item.id !== parseInt(id));
   await writeFile(fileName, JSON.stringify(data, null, 2));
+}
+
+async function valorTotalDePedidosPorCliente(cliente) {
+  const data = JSON.parse(await readFile(fileName));
+  let totalPedidos = 0.0;
+  let pedidos = data.pedidos.filter(
+    (item) => item.cliente === cliente && item.entregue === true
+  );
+  pedidos.forEach((item) => {
+    totalPedidos += parseFloat(item.valor);
+  });
+  return totalPedidos;
 }
 
 export default {
@@ -65,4 +77,5 @@ export default {
   updateEntregue,
   byId,
   remove,
+  valorTotalDePedidosPorCliente,
 };

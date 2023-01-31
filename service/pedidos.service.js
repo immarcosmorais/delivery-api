@@ -24,6 +24,10 @@ async function remove(id) {
   return await PedidosRepository.remove(id);
 }
 
+async function valorTotalDePedidosPorCliente(cliente) {
+  return await PedidosRepository.valorTotalDePedidosPorCliente(cliente);
+}
+
 export default {
   all,
   save,
@@ -31,4 +35,5 @@ export default {
   updateEntregue,
   byId,
   remove,
+  valorTotalDePedidosPorCliente,
 };
