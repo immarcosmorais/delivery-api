@@ -79,6 +79,24 @@ async function remove(req, res, next) {
   }
 }
 
+async function valorTotalDePedidosPorCliente(req, res, next) {
+  try {
+    let pedido = req.body;
+    if (!pedido.cliente) {
+      throw new Error("Campo 'cliente', é obrigatorio");
+    }
+    const valorTotal = await PedidosService.valorTotalDePedidosPorCliente(
+      pedido.cliente
+    );
+    logger.info(
+      `POST /valorTotalDePedidosPorCliente - ${JSON.stringify(valorTotal)}`
+    );
+    res.send({ valor_total: valorTotal });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   all,
   save,
@@ -86,4 +104,5 @@ export default {
   updateEntregue,
   byId,
   remove,
+  valorTotalDePedidosPorCliente,
 };
