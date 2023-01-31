@@ -63,7 +63,6 @@ export default {
   save,
   update,
   updateEntregue,
-  // byId,
+  byId,
   remove,
-  // updateBalance,
 };

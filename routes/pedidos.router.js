@@ -6,10 +6,8 @@ router.get("/", PedidosController.all);
 router.post("/", PedidosController.save);
 router.put("/:id", PedidosController.update);
 router.patch("/updateEntregue/:id", PedidosController.updateEntregue);
-// router.get("/:id", AccountController.byId);
+router.get("/:id", PedidosController.byId);
 router.delete("/:id", PedidosController.remove);
-
-// router.patch("/updateBalance/:id", AccountController.updateBalance);
 
 router.use((err, req, res, next) => {
   logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);

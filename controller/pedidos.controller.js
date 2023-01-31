@@ -60,14 +60,14 @@ async function updateEntregue(req, res, next) {
   }
 }
 
-// async function byId(req, res, next) {
-//   try {
-//     logger.info("GET /account/:id");
-//     res.send(await AccountService.byId(req.params.id));
-//   } catch (err) {
-//     next(err);
-//   }
-// }
+async function byId(req, res, next) {
+  try {
+    logger.info("GET /pedido/:id");
+    res.send(await PedidosService.byId(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+}
 
 async function remove(req, res, next) {
   try {
@@ -79,28 +79,11 @@ async function remove(req, res, next) {
   }
 }
 
-// async function updateBalance(req, res, next) {
-//   try {
-//     const account = req.body;
-//     if (account.balance == null) {
-//       throw new Error("Fild 'balance' is mandatorie.");
-//     }
-//     logger.info(`PUT /account - ${JSON.stringify(account)}`);
-//     res.send(
-//       await AccountService.updateBalance(account.balance, req.params.id)
-//     );
-//   } catch (err) {
-//     next(err);
-//   }
-// }
-
 export default {
   all,
   save,
   update,
   updateEntregue,
-  //   byId,
+  byId,
   remove,
-  //   update,
-  //   updateBalance,
 };
