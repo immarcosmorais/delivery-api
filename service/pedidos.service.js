@@ -28,6 +28,10 @@ async function valorTotalDePedidosPorCliente(cliente) {
   return await PedidosRepository.valorTotalDePedidosPorCliente(cliente);
 }
 
+async function produtosMaisVendidos() {
+  return await PedidosRepository.produtosMaisVendidos();
+}
+
 export default {
   all,
   save,
@@ -36,4 +40,5 @@ export default {
   byId,
   remove,
   valorTotalDePedidosPorCliente,
+  produtosMaisVendidos,
 };

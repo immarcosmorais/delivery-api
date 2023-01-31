@@ -3,10 +3,11 @@ const router = express.Router();
 import PedidosController from "../controller/pedidos.controller.js";
 
 router.get("/", PedidosController.all);
+router.get("/produtosMaisVendidos", PedidosController.produtosMaisVendidos);
+router.get("/:id", PedidosController.byId);
 router.post("/", PedidosController.save);
 router.put("/:id", PedidosController.update);
 router.patch("/updateEntregue/:id", PedidosController.updateEntregue);
-router.get("/:id", PedidosController.byId);
 router.delete("/:id", PedidosController.remove);
 router.post(
   "/valorTotalDePedidosPorCliente",

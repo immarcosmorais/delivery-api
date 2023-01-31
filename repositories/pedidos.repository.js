@@ -70,6 +70,36 @@ async function valorTotalDePedidosPorCliente(cliente) {
   return totalPedidos;
 }
 
+async function produtosMaisVendidos() {
+  const data = JSON.parse(await readFile(fileName));
+  let pedidosEntregues = data.pedidos.filter((item) => item.entregue === true);
+  let resultados = [];
+  pedidosEntregues.sort(function (a, b) {
+    if (a.produto < b.produto) {
+      return -1;
+    }
+    if (a.produto > b.produto) {
+      return 1;
+    }
+    return 0;
+  });
+  pedidosEntregues.forEach((item) => {
+    let resultado = {
+      produto: item.produto,
+      valor: parseFloat(item.valor),
+    };
+    if (resultados.length === 0) {
+      resultados.push(resultado);
+    } else if (resultados[resultados.length - 1].produto === item.produto) {
+      resultados[resultados.length - 1].valor += parseFloat(item.valor);
+    } else {
+      resultados.push(resultado);
+    }
+  });
+  resultados.sort((a, b) => b.valor - a.valor);
+  return resultados;
+}
+
 export default {
   all,
   save,
@@ -78,4 +108,5 @@ export default {
   byId,
   remove,
   valorTotalDePedidosPorCliente,
+  produtosMaisVendidos,
 };

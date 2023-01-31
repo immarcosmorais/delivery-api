@@ -97,6 +97,15 @@ async function valorTotalDePedidosPorCliente(req, res, next) {
   }
 }
 
+async function produtosMaisVendidos(req, res, next) {
+  try {
+    logger.info("GET /produtosMaisVendidos");
+    res.send(await PedidosService.produtosMaisVendidos());
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   all,
   save,
@@ -105,4 +114,5 @@ export default {
   byId,
   remove,
   valorTotalDePedidosPorCliente,
+  produtosMaisVendidos,
 };
