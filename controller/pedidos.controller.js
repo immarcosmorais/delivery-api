@@ -47,6 +47,19 @@ async function update(req, res, next) {
   }
 }
 
+async function updateEntregue(req, res, next) {
+  try {
+    const pedido = req.body;
+    if (!isBoolean(pedido.entregue)) {
+      throw new Error("Campo 'entregue' são obrigatorios");
+    }
+    logger.info("UPDATE /updateEntregue/:id");
+    res.send(await PedidosService.update(pedido.entregue, req.params.id));
+  } catch (err) {
+    next(err);
+  }
+}
+
 // async function byId(req, res, next) {
 //   try {
 //     logger.info("GET /account/:id");
@@ -85,6 +98,7 @@ export default {
   all,
   save,
   update,
+  updateEntregue,
   //   byId,
   //   remove,
   //   update,

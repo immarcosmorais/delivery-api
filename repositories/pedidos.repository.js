@@ -32,6 +32,12 @@ async function update(pedido, id) {
   return data.pedidos[index];
 }
 
+async function updateEntregue(entregue, id) {
+  let pedido = await byId(id);
+  pedido.entregue = entregue;
+  return await update(pedido, id);
+}
+
 function getIndex(data, id) {
   const index = data.pedidos.findIndex((item) => item.id === parseInt(id));
   if (index === -1) {
@@ -40,14 +46,11 @@ function getIndex(data, id) {
   return index;
 }
 
-// async function byId(id) {
-//   const data = JSON.parse(await readFile(fileName));
-//   const account = data.accounts.find((account) => account.id === parseInt(id));
-//   if (account === undefined) {
-//     throw new Error("Record not found");
-//   }
-//   return account;
-// }
+async function byId(id) {
+  const data = JSON.parse(await readFile(fileName));
+  const index = getIndex(data, id);
+  return data.pedidos[index];
+}
 
 // async function remove(id) {
 //   const data = JSON.parse(await readFile(fileName));
@@ -61,6 +64,7 @@ export default {
   all,
   save,
   update,
+  updateEntregue,
   // byId,
   // remove,
   // update,

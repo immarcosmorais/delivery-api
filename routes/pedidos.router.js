@@ -5,6 +5,7 @@ import PedidosController from "../controller/pedidos.controller.js";
 router.get("/", PedidosController.all);
 router.post("/", PedidosController.save);
 router.put("/:id", PedidosController.update);
+router.patch("/updateEntregue/:id", PedidosController.updateEntregue);
 // router.get("/:id", AccountController.byId);
 // router.delete("/:id", AccountController.remove);
 

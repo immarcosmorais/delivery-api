@@ -12,6 +12,10 @@ async function update(pedido, id) {
   return await PedidosRepository.update(pedido, id);
 }
 
+async function updateEntregue(entregue, id) {
+  return await PedidosRepository.update(entregue, id);
+}
+
 // async function byId(id) {
 //   return await AccountRepository.byId(id);
 // }
@@ -28,6 +32,7 @@ export default {
   all,
   save,
   update,
+  updateEntregue,
   //   byId,
   //   remove,
   //   update,
