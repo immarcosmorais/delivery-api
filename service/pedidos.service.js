@@ -8,16 +8,16 @@ async function save(pedido) {
   return await PedidosRepository.save(pedido);
 }
 
+async function update(pedido, id) {
+  return await PedidosRepository.update(pedido, id);
+}
+
 // async function byId(id) {
 //   return await AccountRepository.byId(id);
 // }
 
 // async function remove(id) {
 //   return await AccountRepository.remove(id);
-// }
-
-// async function update(account, id) {
-//   return await AccountRepository.update(account, id);
 // }
 
 // async function updateBalance(balance, id) {
@@ -27,6 +27,7 @@ async function save(pedido) {
 export default {
   all,
   save,
+  update,
   //   byId,
   //   remove,
   //   update,

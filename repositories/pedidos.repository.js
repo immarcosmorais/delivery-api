@@ -21,6 +21,25 @@ async function save(pedido) {
   return pedido;
 }
 
+async function update(pedido, id) {
+  const data = JSON.parse(await readFile(fileName));
+  const index = getIndex(data, id);
+  data.pedidos[index].cliente = pedido.cliente;
+  data.pedidos[index].produto = pedido.produto;
+  data.pedidos[index].valor = pedido.valor;
+  data.pedidos[index].entregue = pedido.entregue;
+  await writeFile(fileName, JSON.stringify(data, null, 2));
+  return data.pedidos[index];
+}
+
+function getIndex(data, id) {
+  const index = data.pedidos.findIndex((item) => item.id === parseInt(id));
+  if (index === -1) {
+    throw new Error("Registro não encontrado");
+  }
+  return index;
+}
+
 // async function byId(id) {
 //   const data = JSON.parse(await readFile(fileName));
 //   const account = data.accounts.find((account) => account.id === parseInt(id));
@@ -38,23 +57,10 @@ async function save(pedido) {
 //   await writeFile(fileName, JSON.stringify(data, null, 2));
 // }
 
-// async function update(account, id) {
-//   const data = JSON.parse(await readFile(fileName));
-//   const index = data.accounts.findIndex(
-//     (account) => account.id === parseInt(id)
-//   );
-//   if (index === -1) {
-//     throw new Error("Record not found");
-//   }
-//   data.accounts[index].name = account.name;
-//   data.accounts[index].balance = account.balance;
-//   await writeFile(fileName, JSON.stringify(data, null, 2));
-//   return data.accounts[index];
-// }
-
 export default {
   all,
   save,
+  update,
   // byId,
   // remove,
   // update,
