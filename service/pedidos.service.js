@@ -13,7 +13,7 @@ async function update(pedido, id) {
 }
 
 async function updateEntregue(entregue, id) {
-  return await PedidosRepository.update(entregue, id);
+  return await PedidosRepository.updateEntregue(entregue, id);
 }
 
 async function byId(id) {

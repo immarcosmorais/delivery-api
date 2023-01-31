@@ -6,8 +6,8 @@ router.get("/", PedidosController.all);
 router.get("/produtosMaisVendidos", PedidosController.produtosMaisVendidos);
 router.get("/:id", PedidosController.byId);
 router.post("/", PedidosController.save);
-router.put("/:id", PedidosController.update);
 router.patch("/updateEntregue/:id", PedidosController.updateEntregue);
+router.put("/:id", PedidosController.update);
 router.delete("/:id", PedidosController.remove);
 router.post(
   "/valorTotalDePedidosPorCliente",

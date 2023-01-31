@@ -54,7 +54,9 @@ async function updateEntregue(req, res, next) {
       throw new Error("Campo 'entregue' são obrigatorios");
     }
     logger.info("UPDATE /updateEntregue/:id");
-    res.send(await PedidosService.update(pedido.entregue, req.params.id));
+    res.send(
+      await PedidosService.updateEntregue(pedido.entregue, req.params.id)
+    );
   } catch (err) {
     next(err);
   }
