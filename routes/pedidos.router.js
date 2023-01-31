@@ -2,8 +2,8 @@ import express from "express";
 const router = express.Router();
 import PedidosController from "../controller/pedidos.controller.js";
 
-// router.post("/", AccountController.save);
 router.get("/", PedidosController.all);
+router.post("/", PedidosController.save);
 // router.get("/:id", AccountController.byId);
 // router.delete("/:id", AccountController.remove);
 // router.put("/:id", AccountController.update);

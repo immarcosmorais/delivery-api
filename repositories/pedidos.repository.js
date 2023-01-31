@@ -6,17 +6,20 @@ async function all() {
   return data.pedidos;
 }
 
-// async function save(account) {
-//   const data = JSON.parse(await readFile(fileName));
-//   account = {
-//     id: data.nextId++,
-//     name: account.name,
-//     balance: account.balance,
-//   };
-//   data.accounts.push(account);
-//   await writeFile(fileName, JSON.stringify(data, null, 2));
-//   return account;
-// }
+async function save(pedido) {
+  const data = JSON.parse(await readFile(fileName));
+  pedido = {
+    id: data.nextId++,
+    cliente: pedido.cliente,
+    produto: pedido.produto,
+    valor: pedido.valor,
+    entregue: false,
+    timestamp: new Date(),
+  };
+  data.pedidos.push(pedido);
+  await writeFile(fileName, JSON.stringify(data, null, 2));
+  return pedido;
+}
 
 // async function byId(id) {
 //   const data = JSON.parse(await readFile(fileName));
@@ -51,7 +54,7 @@ async function all() {
 
 export default {
   all,
-  // save,
+  save,
   // byId,
   // remove,
   // update,

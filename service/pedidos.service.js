@@ -4,9 +4,9 @@ async function all() {
   return await PedidosRepository.all();
 }
 
-// async function save(account) {
-//   return await AccountRepository.save(account);
-// }
+async function save(pedido) {
+  return await PedidosRepository.save(pedido);
+}
 
 // async function byId(id) {
 //   return await AccountRepository.byId(id);
@@ -26,7 +26,7 @@ async function all() {
 
 export default {
   all,
-  //   save,
+  save,
   //   byId,
   //   remove,
   //   update,

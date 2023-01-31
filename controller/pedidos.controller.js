@@ -1,23 +1,23 @@
 import PedidosService from "../service/pedidos.service.js";
 
-// async function save(req, res, next) {
-//   try {
-//     let account = req.body;
-//     if (!account.name || account.balance == null) {
-//       throw new Error("Filds 'name' and 'balance' are mandatorie.");
-//     }
-//     account = await AccountService.save(account);
-//     logger.info(`POST /account - ${JSON.stringify(account)}`);
-//     res.send(account);
-//   } catch (err) {
-//     next(err);
-//   }
-// }
-
 async function all(req, res, next) {
   try {
-    logger.info("GET /account");
+    logger.info("GET /pedidos");
     res.send(await PedidosService.all());
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function save(req, res, next) {
+  try {
+    let pedido = req.body;
+    if (!pedido.cliente || !pedido.produto || pedido.valor == null) {
+      throw new Error("Campo 'cliente', 'produto' e 'valor' são obrigatorios");
+    }
+    pedido = await PedidosService.save(pedido);
+    logger.info(`POST /pedido - ${JSON.stringify(pedido)}`);
+    res.send(pedido);
   } catch (err) {
     next(err);
   }
@@ -71,8 +71,8 @@ async function all(req, res, next) {
 // }
 
 export default {
-  //   save,
   all,
+  save,
   //   byId,
   //   remove,
   //   update,
